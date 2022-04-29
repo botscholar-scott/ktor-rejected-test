@@ -27,13 +27,14 @@ fun getServer(): NettyApplicationEngine {
     }
 }
 
+@ExperimentalCoroutinesApi
 class KtorClientTest {
     private val clientThreads = newSingleThreadContext("client")
     private val syncJob = SupervisorJob()
     private lateinit var actualStatusCode: HttpStatusCode
     private lateinit var actualMessage: String
 
-    @OptIn(ExperimentalCoroutinesApi::class, DelicateCoroutinesApi::class)
+
     @Test
     fun `connect from within onStarted`() = runBlocking {
         val serverThreads = newSingleThreadContext("server")
@@ -57,6 +58,7 @@ class KtorClientTest {
         assertEquals(MESSAGE, actualMessage)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     private fun onStarted(application: Application) {
         System.err.println("[${now()}] ******** onStarted ********")
         syncJob.complete()

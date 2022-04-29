@@ -1,0 +1,13 @@
+# OS created files
+.DS_Store
+
+# JetBrains IDE configuration files.
+**/.idea/*
+# We share project code styles.
+!**/.idea/codeStyles
+!**/.idea/externalDependencies.xml
+
+# JetBrains IDE project files.
+*.iml
+
+target/
